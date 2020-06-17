@@ -1,0 +1,25 @@
+https://stackoverflow.com/questions/31163633/how-to-host-a-reveal-js-presentation
+
+mkdir presentations
+cd presentations
+git init
+git remote add origin git@github.com:pnadon/presentations.git
+
+git remote add upstream git@github.com:hakimel/reveal.js.git
+git pull upstream master
+
+git checkout --orphan my-fancy-presentation
+git reset --hard
+
+cp path/to/my_fancy_presentation.html .
+git add .
+git commit -m 'Initial commit'
+
+git checkout master
+git merge my-fancy-presentation --allow-unrelated-histories
+
+git push --all origin
+
+
+Now, whenever you want to add another presentation, you just need to repeat steps 4-7. 
+Besides, whenever you want to update reveal.js, you can simply do git pull upstream master
